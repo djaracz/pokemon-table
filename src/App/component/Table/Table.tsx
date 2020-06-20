@@ -38,8 +38,6 @@ export function Table<Model> ({ list, listConfig }: Props<Model>) {
   const { width } = useComponentSize(tableWrapperRef);
   const [sortedList, sortList] = useSortedList(list);
 
-  console.log('width', width)
-  console.log(getColumnsWidth(listConfig))
   const stickyColumn = hasStickyColumn(getColumnsWidth(listConfig), width);
 
   return (
