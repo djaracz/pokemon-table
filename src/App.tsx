@@ -4,7 +4,9 @@ import { PokemonListPage } from './Pokemon/page/PokemonListPage/PokemonListPage'
 
 const App = () => (
   <>
-    <PokemonListPage />
+    <div style={{ margin: '80px 60px' }}>
+      <PokemonListPage />
+    </div>
   </>
 );
 

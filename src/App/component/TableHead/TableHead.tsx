@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 import { TableContext } from '../Table/Table.context';
 import { ListConfig } from '../Table/Table';
-import { StyledTHead, StickyTh } from './TableHead.style';
+import { StyledTHead, StickyTh, StyledTh } from './TableHead.style';
 
 type Props = {
   onHeaderClick: (key: string) => void;
@@ -21,10 +21,10 @@ export function TableHead<Model> ({ onHeaderClick }: Props) {
           const { width, header } = (listConfig as ListConfig<Model>)[key as keyof Model];
 
           if (i === lastConfigKeysIndex) {
-            return <StickyTh key={i} onClick={() => onHeaderClick(key)} style={{ minWidth: width }}>{header}</StickyTh>;
+            return <StickyTh key={i} onClick={() => onHeaderClick(key)} width={width}>{header}</StickyTh>;
           }
 
-          return <th key={i} onClick={() => onHeaderClick(key)} style={{ minWidth: width }}>{header}</th>;
+          return <StyledTh key={i} onClick={() => onHeaderClick(key)} width={width}>{header}</StyledTh>;
         })}
       </tr>
     </StyledTHead>
