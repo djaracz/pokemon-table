@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
   position: relative; 
 `;
 
-export const TableWrapper = styled.div`
+export const TableWrapper = styled.div<any>`
   marginLeft: 141px;
   overflow-x: scroll;
   overflow-y: visible;
