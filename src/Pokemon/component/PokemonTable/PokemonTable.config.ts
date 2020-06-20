@@ -4,7 +4,7 @@ import { Pokemon } from '../../model/Pokemon';
 export const pokemonListConfig: ListConfig<Pokemon> = {
   name: {
     header: 'Name',
-    width: 300,
+    width: 100,
   },
   category: {
     header: 'Category',
@@ -16,18 +16,18 @@ export const pokemonListConfig: ListConfig<Pokemon> = {
   },
   weakness: {
     header: 'Weakness',
-    width: 300,
+    width: 200,
   },
   height: {
     header: 'Height',
-    width: 200,
+    width: 100,
   },
   ability: {
     header: 'Ability',
-    width: 300,
+    width: 200,
   },
   evolution: {
     header: 'Evolution',
-    width: 500,
+    width: 200,
   },
 };

@@ -4,6 +4,7 @@ import { useSortedList } from '../../hook/useSortedList';
 import { TableHead } from '../TableHead/TableHead';
 import { TableBody } from '../TableBody/TableBody';
 import { TableContext } from './Table.context';
+import { StyledTable } from './Table.style';
 
 export type ListConfig<Model> = {
     [Key in keyof Model]: {
@@ -24,10 +25,14 @@ export function Table<Model> ({ list, listConfig }: Props<Model>) {
 
   return (
     <TableContext.Provider value={{ list: sortedList, listConfig }}>
-      <table>
-        <TableHead<Model> onHeaderClick={sortList} />
-        <TableBody />
-      </table>
+      <div style={{ position: 'relative' }}>
+        <div style={{ marginLeft: 141, overflowX: 'scroll', overflowY: 'visible', paddingBottom: 5 }}>
+          <StyledTable>
+            <TableHead<Model> onHeaderClick={sortList} />
+            <TableBody />
+          </StyledTable>
+        </div>
+      </div>
     </TableContext.Provider>
   );
 }
