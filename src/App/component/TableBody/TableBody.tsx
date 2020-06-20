@@ -8,7 +8,7 @@ export const TableBody: FC = () => {
 
     return (
         <tbody>
-            {list.map((listItem, i) => <TableRow key={i} item={listItem} />)}
+            {list.map((listItem, i) => <TableRow key={i} item={listItem} waitTimestamp={i * 100} />)}
         </tbody>
     );
 };

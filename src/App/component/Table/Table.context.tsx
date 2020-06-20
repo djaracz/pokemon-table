@@ -6,4 +6,5 @@ export const TableContext = React.createContext<ContextValue<{}>>({
     list: [],
     listConfig: {},
     hasStickyColumn: false,
+    isSorted: false,
 });

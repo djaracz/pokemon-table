@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, {useRef, useState} from 'react';
 import useComponentSize from '@rehooks/component-size'
 
 import { useSortedList } from '../../hook/useSortedList';
@@ -18,6 +18,7 @@ export type ContextValue<Model> = {
   list: Model[];
   listConfig: ListConfig<Model>;
   hasStickyColumn: boolean;
+  isSorted: boolean;
 };
 
 type Props<Model> = Pick<
@@ -35,17 +36,28 @@ const hasStickyColumn = (columnsWidth: number, wrapperWidth: number) => columnsW
 
 export function Table<Model> ({ list, listConfig }: Props<Model>) {
   const tableWrapperRef = useRef();
+  const [isSorted, setIsSorted] = useState(false);
   const { width } = useComponentSize(tableWrapperRef);
   const [sortedList, sortList] = useSortedList(list);
 
   const stickyColumn = hasStickyColumn(getColumnsWidth(listConfig), width);
 
+  const handleOnHeaderClick = (list: any) => {
+    sortList(list);
+    setIsSorted(true);
+  };
+
   return (
     <Wrapper>
-      <TableContext.Provider value={{ list: sortedList, listConfig, hasStickyColumn: stickyColumn }}>
+      <TableContext.Provider value={{
+        list: sortedList,
+        hasStickyColumn: stickyColumn,
+        isSorted,
+        listConfig,
+      }}>
         <TableWrapper ref={tableWrapperRef} hasScroll={stickyColumn}>
           <StyledTable>
-            <TableHead<Model> onHeaderClick={sortList} />
+            <TableHead<Model> onHeaderClick={handleOnHeaderClick} />
             <TableBody />
           </StyledTable>
         </TableWrapper>
