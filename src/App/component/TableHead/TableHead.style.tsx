@@ -12,7 +12,6 @@ export const StyledTHead = styled.thead`
 type StickyTh = {
   width: number;
 };
-// todo: !!!!!! border-left
 export const StickyTh = styled.th<StickyTh>`
   background-color: #4aedc4;
   color: #14a37f;
@@ -20,11 +19,12 @@ export const StickyTh = styled.th<StickyTh>`
   padding: 20px;
   text-align: left;
   white-space: nowrap;
-  // border-left: solid 1px #DDEFEF;
+  border-left: solid 1px #DDEFEF;
   border-right: solid 1px #DDEFEF;
   right: 0;
   position: absolute;
   top: auto;
+  box-sizing: border-box;
   min-width: ${({ width }) => `${width}px`};
 `;
 
@@ -33,5 +33,6 @@ type StyledTh = {
 };
 export const StyledTh = styled.th<StyledTh>`
   padding: 20px;
+  box-sizing: border-box;
   min-width: ${({ width }) => `${width}px`};
 `;

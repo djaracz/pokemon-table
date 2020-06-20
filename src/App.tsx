@@ -1,13 +1,12 @@
 import React from 'react';
 
 import { PokemonListPage } from './Pokemon/page/PokemonListPage/PokemonListPage';
+import { Content } from './App/component/Content/Content.style';
 
 const App = () => (
-  <>
-    <div style={{ margin: '80px 60px' }}>
-      <PokemonListPage />
-    </div>
-  </>
+  <Content>
+    <PokemonListPage />
+  </Content>
 );
 
 export default App;

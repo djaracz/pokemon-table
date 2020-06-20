@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledTable = styled.table`
   border: none;
@@ -12,9 +12,12 @@ export const Wrapper = styled.div`
   position: relative; 
 `;
 
-export const TableWrapper = styled.div<any>`
-  marginLeft: 141px;
-  overflow-x: scroll;
+type TableWrapper = {
+  ref: any;
+  hasScroll: boolean;
+}
+export const TableWrapper = styled.div<TableWrapper>`
+  overflow-x: ${({ hasScroll }) => !!hasScroll && 'scroll'};
   overflow-y: visible;
   padding-bottom: 5px;
 `;

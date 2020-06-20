@@ -9,7 +9,7 @@ type Props = {
 };
 
 export function TableHead<Model> ({ onHeaderClick }: Props) {
-  const { listConfig } = useContext(TableContext);
+  const { listConfig, hasStickyColumn } = useContext(TableContext);
 
   const listConfigKeys = Object.keys(listConfig);
   const lastConfigKeysIndex = listConfigKeys.length - 1;
@@ -20,7 +20,7 @@ export function TableHead<Model> ({ onHeaderClick }: Props) {
         {listConfigKeys.map((key, i) => {
           const { width, header } = (listConfig as ListConfig<Model>)[key as keyof Model];
 
-          if (i === lastConfigKeysIndex) {
+          if (hasStickyColumn && i === lastConfigKeysIndex) {
             return <StickyTh key={i} onClick={() => onHeaderClick(key)} width={width}>{header}</StickyTh>;
           }
 

@@ -9,7 +9,7 @@ type Props<Item> = {
 }
 
 export function TableRow<Model> ({ item }: Props<Model>) {
-    const { listConfig } = useContext(TableContext);
+    const { listConfig, hasStickyColumn } = useContext(TableContext);
 
     const listConfigKeys = Object.keys(listConfig);
     const lastConfigKeysIndex = listConfigKeys.length - 1;
@@ -20,7 +20,7 @@ export function TableRow<Model> ({ item }: Props<Model>) {
                 const { width } = (listConfig as ListConfig<Model>)[configKey as keyof Model];
                 const cell = (item as Model)[configKey as keyof Model];
 
-                if (i === lastConfigKeysIndex) {
+                if (hasStickyColumn && i === lastConfigKeysIndex) {
                     return <StickyTd key={i} width={width}>{cell}</StickyTd>
                 }
 

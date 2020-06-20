@@ -11,16 +11,15 @@ export const StyledTd = styled.td`
 type StickyTd = {
   width?: number;
 };
-
-// todo: !!!!!! border-left
 export const StickyTd = styled.td<StickyTd>`
   background: #fff;
   border-bottom: solid 1px #DDEFEF;
-  // border-left: solid 1px #DDEFEF;
+  border-left: solid 1px #DDEFEF;
   border-right: solid 1px #DDEFEF;
   padding: 20px;
   right: 0;
   position: absolute;
   top: auto;
+  box-sizing: border-box;
   min-width: ${({ width }) => `${width}px`}
 `;
